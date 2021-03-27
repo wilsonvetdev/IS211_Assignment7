@@ -28,17 +28,17 @@ class Game:
         self.current_player = player_one
 
     def toggle_player(self, player_one, player_two):
-        if self.current_player == player_one:
+        if self.current_player is player_one:
             self.current_player = player_two
             return self.current_player
 
-        if self.current_player == player_two:
+        if self.current_player is player_two:
             self.current_player = player_one
             return self.current_player
     
     def start_game(self, player_one, player_two):
         while max(self.scores) < self.max_score:
-            rolling = input(f'Player {self.current_player.num} rolling? Press "r" to roll. -->')
+            rolling = input(f"Player {self.current_player.num} rolling? Press 'r' to roll. -->")
 
             if rolling:
                 current_roll = game_dice.roll()
@@ -46,7 +46,7 @@ class Game:
 
                 if current_roll == 1:
                     print(f'That\'s too bad! Your score returns to 0.')
-                    self.toggle_player(player_one, player_two) # can't toggle while inside the start_game function
+                    self.toggle_player(player_one, player_two)
                     print(self.current_player.num)
 
 
